@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from "react-router-dom";
+import { WatchProvider } from "./context.js";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <WatchProvider>
+      <Router>
+        <div className="app">
+          <App />
+        </div>
+      </Router>
+    </WatchProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
