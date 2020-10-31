@@ -10,6 +10,7 @@ export default function CartTotals({ value, history }) {
       <p>Tax: £{cartTax}</p>
       <h3>Total: £{cartTotal}</h3>
       <PayPalButton total={cartTotal} clearCart={clearCart} history={history} />
+      <div className="pb-4"></div>
     </SubtotalContainer>
   );
 }
