@@ -12,11 +12,11 @@ export default class Home extends Component {
             <div className="col-6">
               <img className="img-fluid" src="img/watch.png" alt="watch" />
             </div>
-            <div className="col-6 text-white">
-              <h1 className="text-white">Shop the Collection</h1>
-              <p>Get your zodiac watch today.</p>
+            <div className="col-6 text-white d-flex flex-column justify-content-center">
+              <h1 className="text-white">What's Your Sign?</h1>
+              <p>Get your exclusive zodiac watch today.</p>
               <NavLink to="/shop">
-                <button>Browse</button>
+                <button className="mt-3">Shop Now</button>
               </NavLink>
             </div>
           </div>

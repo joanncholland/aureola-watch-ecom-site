@@ -6,61 +6,62 @@ import Badge from "@material-ui/core/Badge";
 import { WatchConsumer } from "../context";
 
 export default class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.toggleClass = this.toggleClass.bind(this);
+    this.state = {
+      active: false,
+    };
+  }
+  toggleClass() {
+    console.log("toggled");
+    const currentState = this.state.active;
+    this.setState({
+      active: !currentState,
+    });
+  }
   render() {
     return (
-      <NavbarWrapper className="navbar navbar-expand-lg navbar-dark bg-purple">
-        <NavLink exact to="/" className="navbar-brand">
-          <img src={logo} className="app-logo" alt="Logo" />
+      <NavbarWrapper>
+        <div className="logo">
+          <img src={logo} className="app-logo" alt="logo" />
           <span className="navbar-brand-name ml-3">Aureola</span>
-        </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+        </div>
+        <ul
+          className={this.state.active ? "nav-links nav-active" : "nav-links"}
         >
-          <span className="fas fa-bars white-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav d-flex flex-fill justify-content-center">
-            <li className="nav-item">
-              <NavLink exact to="/" className="nav-link">
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/shop" activeClassName="active" className="nav-link">
-                Shop
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/contact"
-                className="nav-link"
-                activeClassName="active"
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-          <div className="ml-auto">
-            <NavLink to="/cart">
-              <WatchConsumer>
-                {(value) => {
-                  const { cart } = value;
-                  const cartCount = cart.length;
-                  return (
-                    <Badge color="secondary" badgeContent={cartCount}>
-                      <i className="fas fa-shopping-cart white-icon"></i>
+          <li onClick={this.toggleClass}>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li onClick={this.toggleClass}>
+            <NavLink to="/shop">Shop</NavLink>
+          </li>
+          <li onClick={this.toggleClass}>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+          <li onClick={this.toggleClass}>
+            <WatchConsumer>
+              {(value) => {
+                const { cart } = value;
+                const length = cart.length;
+                return (
+                  <NavLink to="/cart">
+                    <Badge color="primary" badgeContent={length}>
+                      <i className="fas fa-shopping-cart"></i>
                     </Badge>
-                  );
-                }}
-              </WatchConsumer>
-            </NavLink>
-          </div>
+                  </NavLink>
+                );
+              }}
+            </WatchConsumer>
+          </li>
+        </ul>
+        <div
+          className={this.state.active ? "burger toggle" : "burger"}
+          onClick={this.toggleClass}
+        >
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
         </div>
       </NavbarWrapper>
     );
@@ -68,15 +69,32 @@ export default class Navbar extends Component {
 }
 
 const NavbarWrapper = styled.nav`
-  .navbar-brand-name {
-    margin-top: 0.1rem;
-    font-size: 1.2rem;
-    font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 60px;
+  background: var(--darkPurple);
+  color: var(--mainWhite);
+  .logo {
+    color: white;
     text-transform: uppercase;
-    position: absolute;
+    letter-spacing: 2px;
+    font-size: 20px;
   }
-  .nav-link {
-    text-transform: uppercase;
-    font-size: 0.8rem;
+  ul {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 35%;
+  }
+  ul a {
+    color: var(--mainWhite);
+    letter-spacing: 2px;
+    font-size: 1rem;
+  }
+  ul li {
+    list-style: none;
   }
 `;
