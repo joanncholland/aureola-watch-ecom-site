@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Badge from "@material-ui/core/Badge";
+import { WatchConsumer } from "../context";
 
 export default class Navbar extends Component {
   render() {
@@ -46,7 +48,17 @@ export default class Navbar extends Component {
           </ul>
           <div className="ml-auto">
             <NavLink to="/cart">
-              <i className="fas fa-shopping-cart white-icon"></i>
+              <WatchConsumer>
+                {(value) => {
+                  const { cart } = value;
+                  const cartCount = cart.length;
+                  return (
+                    <Badge color="secondary" badgeContent={cartCount}>
+                      <i className="fas fa-shopping-cart white-icon"></i>
+                    </Badge>
+                  );
+                }}
+              </WatchConsumer>
             </NavLink>
           </div>
         </div>
