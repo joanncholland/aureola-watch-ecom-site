@@ -8,11 +8,11 @@ export default class Home extends Component {
     return (
       <HomeContainer>
         <div className="container">
-          <div className="row">
-            <div className="col-6">
+          <div className="row pb-5">
+            <div className="col-md-6 col-12">
               <img className="img-fluid" src="img/watch.png" alt="watch" />
             </div>
-            <div className="col-6 text-white d-flex flex-column justify-content-center">
+            <div className="col-md-6 col-12 text-white d-flex flex-column justify-content-center">
               <h1 className="text-white">What's Your Sign?</h1>
               <p>Get your exclusive zodiac watch today.</p>
               <NavLink to="/shop">
