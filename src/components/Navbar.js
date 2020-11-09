@@ -23,8 +23,10 @@ export default class Navbar extends Component {
     return (
       <NavbarWrapper>
         <div className="logo">
-          <img src={logo} className="app-logo" alt="logo" />
-          <span className="navbar-brand-name ml-3">Aureola</span>
+          <NavLink to="/">
+            <img src={logo} className="app-logo" alt="logo" />
+            <span className="navbar-brand-name ml-3">Aureola</span>
+          </NavLink>
         </div>
         <ul
           className={this.state.active ? "nav-links nav-active" : "nav-links"}
@@ -86,6 +88,13 @@ const NavbarWrapper = styled.nav`
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 20px;
+  }
+  .logo a {
+    color: var(--mainWhite);
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
   ul {
     padding-top: 15px;
