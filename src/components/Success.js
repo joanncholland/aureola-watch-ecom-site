@@ -8,8 +8,8 @@ export default class Success extends Component {
       <div className="text-center">
         <h1 className="mt-5">Success!</h1>
         <p>
-          The payment has gone through, and your brand new timepiece is now on
-          it's way to you.
+          The payment has gone through, and your exclusive watch is now on it's
+          way to you.
         </p>
         <NavLink to="/shop">
           <Button className="mt-4">Continue Browsing</Button>
