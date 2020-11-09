@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { WatchConsumer } from "../context";
 import { NavLink } from "react-router-dom";
 import { Button } from "./Button";
+import Modal from "./Modal";
 import Title from "./Title";
 
 export default class Details extends Component {
@@ -19,6 +20,7 @@ export default class Details extends Component {
               company,
               info,
             } = value.watchDetail;
+            const { modalOpen, closeModal } = value;
             return (
               <div className="container-fluid">
                 <div className="row justify-content-center">
@@ -51,7 +53,13 @@ export default class Details extends Component {
                         <NavLink to="/shop">
                           <Button>Back to Shop</Button>
                         </NavLink>
-                        <Button cart onClick={() => value.addToCart(id)}>
+                        <Button
+                          cart
+                          onClick={() => {
+                            value.addToCart(id);
+                            value.openModal(id);
+                          }}
+                        >
                           Add to Cart
                         </Button>
                       </div>
@@ -60,6 +68,7 @@ export default class Details extends Component {
                   </div>
                   {/** end product info */}
                 </div>
+                <Modal />
               </div>
             );
           }}

@@ -11,6 +11,8 @@ class WatchProvider extends Component {
     cartSubtotal: 0,
     cartTax: 0,
     cartTotal: 0,
+    modalOpen: false,
+    modalProduct: watchDetailSample,
   };
 
   // create fresh data from data.js in state
@@ -159,6 +161,23 @@ class WatchProvider extends Component {
     );
   };
 
+  openModal = (id) => {
+    const product = this.getWatchById(id);
+    this.setState(() => {
+      return {
+        modalProduct: product,
+        modalOpen: true,
+      };
+    });
+  };
+  closeModal = () => {
+    this.setState(() => {
+      return {
+        modalOpen: false,
+      };
+    });
+  };
+
   render() {
     return (
       <WatchContext.Provider
@@ -170,6 +189,8 @@ class WatchProvider extends Component {
           decrement: this.decrement,
           removeFromCart: this.removeFromCart,
           clearCart: this.clearCart,
+          openModal: this.openModal,
+          closeModal: this.closeModal,
         }}
       >
         {this.props.children}
