@@ -20,7 +20,6 @@ export default class Details extends Component {
               company,
               info,
             } = value.watchDetail;
-            const { modalOpen, closeModal } = value;
             return (
               <div className="container-fluid">
                 <div className="row justify-content-center">
