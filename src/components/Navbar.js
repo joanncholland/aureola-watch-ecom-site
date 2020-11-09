@@ -14,7 +14,6 @@ export default class Navbar extends Component {
     };
   }
   toggleClass() {
-    console.log("toggled");
     const currentState = this.state.active;
     this.setState({
       active: !currentState,
