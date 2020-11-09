@@ -30,13 +30,19 @@ export default class Navbar extends Component {
           className={this.state.active ? "nav-links nav-active" : "nav-links"}
         >
           <li onClick={this.toggleClass}>
-            <NavLink to="/">Home</NavLink>
+            <NavLink activeClassName="active-link" exact to="/">
+              Home
+            </NavLink>
           </li>
           <li onClick={this.toggleClass}>
-            <NavLink to="/shop">Shop</NavLink>
+            <NavLink activeClassName="active-link" to="/shop">
+              Shop
+            </NavLink>
           </li>
           <li onClick={this.toggleClass}>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink activeClassName="active-link" to="/contact">
+              Contact
+            </NavLink>
           </li>
           <li onClick={this.toggleClass}>
             <WatchConsumer>
@@ -95,5 +101,8 @@ const NavbarWrapper = styled.nav`
   }
   ul li {
     list-style: none;
+  }
+  .active-link {
+    text-decoration: underline;
   }
 `;
